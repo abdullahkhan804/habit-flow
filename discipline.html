@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1220">
+  <title>Habit Flow | Discipline Tracker</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="discipline.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#">
+        <span class="brand-icon">✦</span>
+        <span>Habit<span class="brand-accent">Flow</span></span>
+      </a>
+      <div class="topbar-right">
+        <span class="live-dot"></span>
+        <span class="topbar-label">YOUR DISCIPLINE SPACE</span>
+        <div class="avatar">H</div>
+      </div>
+    </header>
+
+    <section class="welcome">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-line"></span> FOUR-MONTH CHALLENGE</p>
+        <h1>Small steps.<br><span>Big transformation.</span></h1>
+        <p class="welcome-text">Build consistency, one day at a time.</p>
+      </div>
+      <div class="date-pill">
+        <span class="date-icon">◷</span>
+        <span id="todayLabel">Your journey</span>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="stat-card">
+        <div class="stat-top"><span>Completion</span><span class="stat-symbol green">↗</span></div>
+        <div class="stat-number"><span id="progressText">0%</span></div>
+        <div class="stat-foot"><span class="mini-dot green-bg"></span> Overall progress</div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-top"><span>Days completed</span><span class="stat-symbol cyan">✓</span></div>
+        <div class="stat-number"><span id="daysText">0</span><small> / 120</small></div>
+        <div class="stat-foot">Keep showing up</div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-top"><span>Current streak</span><span class="stat-symbol purple">⚡</span></div>
+        <div class="stat-number"><span id="currentStreak">0</span><small> days</small></div>
+        <div class="stat-foot">Your consistency chain</div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-top"><span>Best streak</span><span class="stat-symbol orange">♛</span></div>
+        <div class="stat-number"><span id="bestStreak">0</span><small> days</small></div>
+        <div class="stat-foot">Your personal record</div>
+      </article>
+    </section>
+
+    <section class="panel main-panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR ACTIVITY</p>
+          <h2>Habit completion</h2>
+          <p class="muted">Every square represents one day of your journey.</p>
+        </div>
+        <div class="legend"><span class="legend-box"></span> Completed</div>
+      </div>
+
+      <div class="heatmap-wrap">
+        <div class="weekday-labels">
+          <span>MON</span><span>TUE</span><span>WED</span><span>THU</span>
+          <span>FRI</span><span>SAT</span><span>SUN</span>
+        </div>
+        <div id="calendar" class="calendar-grid"></div>
+      </div>
+      <div class="heatmap-footer">
+        <span id="calendarRange">November 2026 — February 2027</span>
+        <span class="intensity-legend">Less <i class="level-0"></i><i class="level-1"></i><i class="level-2"></i><i class="level-3"></i> More</span>
+      </div>
+    </section>
+
+    <section class="charts-grid">
+      <article class="panel chart-panel">
+        <div class="chart-heading">
+          <div><p class="eyebrow">CONSISTENCY</p><h2>Progress flow</h2></div>
+          <span class="chart-badge green-badge">Cumulative</span>
+        </div>
+        <p class="muted chart-subtitle">How your completed days add up over time.</p>
+        <div class="chart-area"><canvas id="lineChart" aria-label="Cumulative progress line chart"></canvas></div>
+        <div class="chart-foot"><span>Start</span><span>Challenge end</span></div>
+      </article>
+
+      <article class="panel chart-panel">
+        <div class="chart-heading">
+          <div><p class="eyebrow">MONTHLY ACTIVITY</p><h2>Monthly overview</h2></div>
+          <span class="chart-badge purple-badge">4 months</span>
+        </div>
+        <p class="muted chart-subtitle">Completed days compared across months.</p>
+        <div class="chart-area"><canvas id="barChart" aria-label="Monthly completed days bar chart"></canvas></div>
+        <div class="chart-foot"><span>November</span><span>February</span></div>
+      </article>
+    </section>
+
+    <section class="bottom-grid">
+      <article class="panel progress-panel">
+        <div class="chart-heading">
+          <div><p class="eyebrow">THE BIG PICTURE</p><h2>Challenge progress</h2></div>
+          <span class="progress-ring-icon">◉</span>
+        </div>
+        <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+        <div class="progress-meta"><strong id="progressCaption">0 of 120 days completed</strong><span id="remainingDays">120 days left</span></div>
+      </article>
+
+      <article class="panel quote-panel">
+        <div class="quote-mark">“</div>
+        <p id="quoteText" class="quote-text">Success is the sum of small efforts, repeated day in and day out.</p>
+        <p id="quoteAuthor" class="quote-author">— Robert Collier</p>
+      </article>
+    </section>
+    
+<section class="panel achievements-panel">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">YOUR MILESTONES</p>
+      <h2>Achievement badges</h2>
+      <p class="muted">Every milestone is proof that you kept going.</p>
+    </div>
+    <span class="achievement-icon">🏆</span>
+  </div>
+
+  <div class="achievements-grid">
+    <article class="achievement-card" data-milestone="7">
+      <div class="badge-art bronze">⚔️</div>
+      <h3>7-Day Warrior</h3>
+      <p>Complete 7 days</p>
+      <span class="badge-status">🔒 Locked</span>
+      <div class="badge-track"><span></span></div>
+    </article>
+
+    <article class="achievement-card" data-milestone="14">
+      <div class="badge-art purple-medal">🔥</div>
+      <h3>14-Day Fighter</h3>
+      <p>Complete 14 days</p>
+      <span class="badge-status">🔒 Locked</span>
+      <div class="badge-track"><span></span></div>
+    </article>
+
+    <article class="achievement-card" data-milestone="30">
+      <div class="badge-art green-medal">🏆</div>
+      <h3>30-Day Legend</h3>
+      <p>Complete 30 days</p>
+      <span class="badge-status">🔒 Locked</span>
+      <div class="badge-track"><span></span></div>
+    </article>
+
+    <article class="achievement-card" data-milestone="60">
+      <div class="badge-art gold-medal">👑</div>
+      <h3>60-Day Master</h3>
+      <p>Complete 60 days</p>
+      <span class="badge-status">🔒 Locked</span>
+      <div class="badge-track"><span></span></div>
+    </article>
+
+    <article class="achievement-card" data-milestone="90">
+      <div class="badge-art diamond-medal">💎</div>
+      <h3>90-Day Elite</h3>
+      <p>Complete 90 days</p>
+      <span class="badge-status">🔒 Locked</span>
+      <div class="badge-track"><span></span></div>
+    </article>
+
+    <article class="achievement-card" data-milestone="120">
+      <div class="badge-art ultimate-medal">🌟</div>
+      <h3>120-Day Champion</h3>
+      <p>Complete all 120 days</p>
+      <span class="badge-status">🔒 Locked</span>
+      <div class="badge-track"><span></span></div>
+    </article>
+  </div>
+</section>
+
+    <footer class="footer">
+      <p><span class="footer-star">✦</span> HABIT FLOW <span class="footer-separator">/</span> BUILT BY YOU, POWERED BY DISCIPLINE</p>
+      <div class="footer-actions">
+        <span id="statusMessage" role="status">Your progress saves automatically.</span>
+        <button id="resetBtn" class="reset-btn" type="button">Reset challenge</button>
+      </div>
+    </footer>
+    
+<div id="celebrationOverlay" class="celebration-overlay" hidden>
+  <div class="celebration-card">
+    <button id="closeCelebration" class="celebration-close" type="button" aria-label="Close">✕</button>
+    <div class="celebration-emoji" id="celebrationEmoji">🏆</div>
+    <p class="eyebrow">MILESTONE UNLOCKED</p>
+    <h2 id="celebrationTitle">You're a Warrior!</h2>
+    <p id="celebrationMessage">Your consistency is paying off.</p>
+    <button id="celebrationContinue" class="celebration-continue" type="button">Keep Going ✦</button>
+    <div id="confettiContainer" class="confetti-container" aria-hidden="true"></div>
+  </div>
+</div>
+  </main>
+
+  <script src="discipline.js"></script>
+</body>
+</html>
